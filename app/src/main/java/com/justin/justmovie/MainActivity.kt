@@ -55,6 +55,14 @@ class MainActivity : AppCompatActivity() {
 
 
     fun step1() {
+
+    }
+
+    fun set2() {
+
+    }
+
+    fun set3() {
         
     }
 }
