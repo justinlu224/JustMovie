@@ -70,7 +70,4 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun set5 () {
-        
-    }
 }
