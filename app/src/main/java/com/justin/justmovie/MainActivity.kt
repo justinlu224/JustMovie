@@ -66,11 +66,5 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun set4() {
 
-    }
-
-    fun set5 () {
-        
-    }
 }
