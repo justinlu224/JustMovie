@@ -74,4 +74,8 @@ class MainActivity : AppCompatActivity() {
         
     }
 
+    fun step6() {
+        
+    }
+
 }
