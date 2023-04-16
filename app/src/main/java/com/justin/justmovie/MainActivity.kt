@@ -51,9 +51,10 @@ class MainActivity : AppCompatActivity() {
                 Log.e(TAG,"api error: ${e.message}")
             }
         }
+    }
 
 
-
-
+    fun step1() {
+        
     }
 }
