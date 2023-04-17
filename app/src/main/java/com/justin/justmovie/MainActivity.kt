@@ -62,8 +62,4 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun set3() {
-
-    }
-
 }
