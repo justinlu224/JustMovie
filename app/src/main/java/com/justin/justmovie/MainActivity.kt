@@ -55,19 +55,27 @@ class MainActivity : AppCompatActivity() {
 
 
     fun step1() {
+        //12213
+    }
+
+    fun step44() {
 
     }
 
     fun step2() {
-        
+        //23244243
     }
 
     fun step3() {
 
     }
 
-    fun step4() {
+    fun step555() {
         
+    }
+
+    fun step4() {
+
     }
 
 }
