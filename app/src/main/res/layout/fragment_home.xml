@@ -6,10 +6,50 @@
     android:background="@color/purple_1e153b"
     tools:context=".HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_blank_fragment" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:id="@+id/loginButton"
+            android:text="login"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:id="@+id/loginWith400"
+            android:text="loginWith400"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:id="@+id/loginWith401"
+            android:text="loginWith401"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:id="@+id/loginWith500"
+            android:text="loginWith500"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </FrameLayout>

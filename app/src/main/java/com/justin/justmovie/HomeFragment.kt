@@ -1,10 +1,21 @@
 package com.justin.justmovie
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
+import com.justin.justmovie.databinding.FragmentHomeBinding
+import com.justin.justmovie.model.Error
+import com.justin.justmovie.model.Success
+import com.justin.justmovie.model.onLoading
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +32,10 @@ class HomeFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private val viewModel: HomeViewModel by viewModels()
+
+    lateinit var binding:FragmentHomeBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -32,9 +47,55 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        binding = FragmentHomeBinding.inflate(inflater,container,false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+        binding.loginButton.setOnClickListener {
+
+            viewModel.loginWithFlow(null)
+
+        }
+
+        binding.loginWith400.setOnClickListener {
+
+            viewModel.loginWithFlow("400")
+        }
+
+        viewModel.loginApiResult.observe(viewLifecycleOwner){
+
+            Log.d("Home","observe ${Thread.currentThread().name}")
+
+            when(it) {
+                is Error -> {
+                    Toast.makeText(requireContext(),it.errorResponse.message,Toast.LENGTH_SHORT).show()
+                }
+                is Success -> {
+                    Toast.makeText(requireContext(),it.data.member?.nickname,Toast.LENGTH_SHORT).show()
+                }
+                is onLoading -> Toast.makeText(requireContext(),"loading....",Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        binding.loginWith401.setOnClickListener {
+
+            viewModel.loginWithFlow("401")
+        }
+
+        binding.loginWith500.setOnClickListener {
+
+            viewModel.loginWithFlow("500")
+        }
+
+
+
+
     }
 
     companion object {

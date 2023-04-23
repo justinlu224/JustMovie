@@ -38,8 +38,11 @@ class MainActivity : AppCompatActivity() {
             try {
                 val response = ApiRepository.getMovieDetail("")
 
+
+
+
                 if (response.isSuccessful == false) {
-                    Log.e(TAG,"api response is fail: ${response.errorBody()}")
+                    Log.e(TAG,"api response is fail: ${response.code()} ${response.errorBody()}")
                     return@launch
                 }
 

@@ -1,6 +1,9 @@
 package com.justin.justmovie
 
+import com.google.gson.Gson
+import com.justin.justmovie.model.ErrorResponse
 import okhttp3.OkHttpClient
+import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -25,5 +28,17 @@ object RetrofitManager {
         .build()
 
     val apiService = retrofit.create<ApiService>()
+
+
+
+    private val loginRetrofit = Retrofit.Builder()
+        .baseUrl("https://fcb10186-f7c3-4b49-be0f-13d2ea7c213f.mock.pstmn.io")
+        .addConverterFactory(GsonConverterFactory.create())
+        .client(httpClient.build())
+        .build()
+
+    val loginService = loginRetrofit.create(LoginService::class.java)
+
+    fun ResponseBody?.data() = Gson().fromJson(this?.string(), ErrorResponse::class.java)
 
 }
