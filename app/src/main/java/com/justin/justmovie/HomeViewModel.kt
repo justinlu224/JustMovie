@@ -4,16 +4,18 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.gson.Gson
-import com.justin.justmovie.RetrofitManager.data
+import com.justin.justmovie.JustMovieExtansion.data
 import com.justin.justmovie.model.*
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.*
-import okhttp3.ResponseBody
-import retrofit2.Response
-import java.util.concurrent.Flow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.onStart
+import javax.inject.Inject
 
-class HomeViewModel : ViewModel() {
+@HiltViewModel
+class HomeViewModel @Inject constructor(val apiRepository: ApiRepository) : ViewModel() {
 
     private val _loginApiresult = MutableLiveData<ResultStatus<LoginResponse>>()
 
@@ -21,7 +23,7 @@ class HomeViewModel : ViewModel() {
 
     fun loginWithFlow(errorCode: String?){
 
-        ApiRepository.getLogin(errorCode ?: "")
+        apiRepository.getLogin(errorCode ?: "")
             .flowOn(Dispatchers.IO)
             .onStart { _loginApiresult.postValue( onLoading() )}
             .onEach {

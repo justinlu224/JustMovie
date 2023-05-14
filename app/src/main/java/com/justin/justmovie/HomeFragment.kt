@@ -14,6 +14,7 @@ import com.justin.justmovie.databinding.FragmentHomeBinding
 import com.justin.justmovie.model.Error
 import com.justin.justmovie.model.Success
 import com.justin.justmovie.model.onLoading
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
@@ -27,6 +28,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [HomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
