@@ -61,7 +61,7 @@ class HomeFragment : Fragment() {
 
         binding.loginButton.setOnClickListener {
 
-            viewModel.loginWithFlow(null)
+            viewModel.login2(null)
 
         }
 

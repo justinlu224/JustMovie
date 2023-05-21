@@ -1,6 +1,7 @@
 package com.justin.justmovie
 
 import android.util.Log
+import com.justin.justmovie.model.LoginResponse
 import kotlinx.coroutines.flow.flow
 import retrofit2.Response
 import javax.inject.Inject
@@ -22,6 +23,11 @@ class ApiRepository @Inject constructor(
         if (errorCode.isBlank()) emit(loginService.loginFlow())
         else emit(loginService.loginFlow(errorCode))
 
+    }
+
+   suspend fun getLogin2(errorCode: String): Response<LoginResponse> {
+       return if (errorCode.isBlank()) loginService.login()
+        else loginService.login(errorCode)
     }
 
 
